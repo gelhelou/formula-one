@@ -37,12 +37,30 @@ const champions = [
 ];
 
 describe('App', () => {
+    let component;
+    const fetchWorldChampions = spy();
+
+    before(() => {
+        component = shallow(<App
+            worldChampions={champions}
+            pending={false}
+            fetchWorldChampions={fetchWorldChampions}
+        />)
+    });
+
+    it('calls fetchWorldChampions on componentDidMount', () => {
+        component.instance().componentDidMount();
+        expect(fetchWorldChampions.calledWith()).to.equal(true);
+    });
+});
+
+describe('App', () => {
     describe('isDataAvailable', () => {
         let component;
         const fetchWorldChampions = spy();
 
         before(() => {
-            component = shallow(<App 
+            component = shallow(<App
                 worldChampions={champions}
                 pending={false}
                 fetchWorldChampions={fetchWorldChampions}
@@ -73,7 +91,7 @@ describe('App', () => {
     };
 
     before(() => {
-        component = shallow(<App 
+        component = shallow(<App
             worldChampions={champions}
             pending={false}
             fetchWorldChampions={fetchWorldChampions}
@@ -93,7 +111,7 @@ describe('App', () => {
     const fetchWorldChampions = spy();
 
     before(() => {
-        component = shallow(<App 
+        component = shallow(<App
             worldChampions={[]}
             pending={true}
             fetchWorldChampions={fetchWorldChampions}
@@ -111,7 +129,7 @@ describe('App', () => {
     const fetchWorldChampions = spy();
 
     before(() => {
-        component = shallow(<App 
+        component = shallow(<App
             worldChampions={champions}
             pending={false}
             fetchWorldChampions={fetchWorldChampions}
