@@ -1,0 +1,39 @@
+.season-winners-wrapper {
+    font-family: "Helvetica", sans-serif;
+    border-collapse: collapse;
+    margin: 15px;
+    box-shadow: 0 0 15px #aaa;
+}
+
+.season-winners-wrapper > .headings {
+    display: flex;
+    .heading {
+        flex: 1 0;
+        box-sizing: border-box;
+        background: green;
+        color: white;
+        padding: 10px;
+        text-align: left;
+    }
+}
+
+.season-winners-wrapper > .winners {
+    .winner-row {
+        display: flex;
+    }
+    .winner-row.champion-highlight {
+        background-color: gold;
+        color: green;
+    }
+    .winner-row > div {
+        flex: 1 0;
+        box-sizing: border-box;
+        padding: 10px;
+        text-align: left;
+        border: 1px solid green;
+    }
+}
+
+.winners-loader {
+    text-align: center;
+}

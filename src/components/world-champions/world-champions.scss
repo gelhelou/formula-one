@@ -1,0 +1,39 @@
+.world-champions-wrapper {
+    font-family: "Helvetica", sans-serif;
+    border-collapse: collapse;
+    margin: 50px auto;
+    width: 50%;
+
+    #world-champions-title {
+        margin-bottom: 20px;
+        font-size: 22px;
+    }
+}
+
+.world-champions-wrapper > .headings {
+    display: flex;
+    .heading {
+        flex: 1 0;
+        box-sizing: border-box;
+        background: goldenrod;
+        color: white;
+        padding: 10px;
+        text-align: left;
+        min-width: 100px;
+    }
+}
+
+.world-champions-wrapper > .champions {
+    .champion-row {
+        display: flex;
+    }
+    .champion-row > div {
+        flex: 1 0;
+        box-sizing: border-box;
+        background: white;
+        padding: 10px;
+        text-align: left;
+        border: 1px solid goldenrod;
+        min-width: 100px;
+    }
+}
