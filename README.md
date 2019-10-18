@@ -13,6 +13,7 @@ This single page application presents a list that shows the F1 world champions s
 ## Run the Project 
 
 - Run ```npm start```. This will run the ```webpack-dev-server``` and launch your favorite browser with the project running on ```localhost```.
+- Change ```START_YEAR``` and ```END_YEAR``` in the ```config.js``` file to automatically update the range of data being fetched and hence the data displayed for the wolrd champions.
 
 ## Compile a Build
 
