@@ -9,5 +9,5 @@ export default {
     },
     worldChampions: [],
     seasonWinners: [],
-    error: null
+    error: {}
 }
