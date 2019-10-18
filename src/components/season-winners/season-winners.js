@@ -17,7 +17,7 @@ export const SeasonWinnersView = ({
     {!loading ? <div className="season-winners-wrapper">
         <div className="season-winners-title">Season Winners</div>
         <div className="season-winners-listing">
-        <Headings item={winners[0]} hidden={['driverId']} />
+        <Headings item={winners.length > 0 ? winners[0] : {}} hidden={['driverId']} />
         <div className="winners">
             {
                 winners.map((item, idx) => {

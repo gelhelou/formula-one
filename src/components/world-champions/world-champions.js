@@ -16,7 +16,7 @@ export const WorldChampionsView = ({
 }) => <React.Fragment>
     <div className="world-champions-wrapper">
         <div id="world-champions-title">F1 World Champions</div>
-        <Headings item={champions[0]} hidden={['driverId']} />
+        <Headings item={champions.length > 0 ? champions[0] : {}} hidden={['driverId']} />
         <div className="champions">
             {
                 champions.map((item, idx) => {
