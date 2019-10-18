@@ -9,9 +9,8 @@ import PropTypes from 'prop-types';
 export const Headings = ({ item, hidden }) => <React.Fragment>
     <div className="headings">
     {
-        Object.keys(item).map((key, idx) => {
-            return !hidden.includes(key) && <div key={idx} className="heading">{key.toUpperCase()}</div>
-        })
+        Object.keys(item).map((key, idx) =>
+            !hidden.includes(key) && <div key={idx} className="heading">{key.toUpperCase()}</div>)
     }
     </div>
 </React.Fragment>;
@@ -19,4 +18,22 @@ export const Headings = ({ item, hidden }) => <React.Fragment>
 Headings.propTypes = {
     item: PropTypes.object,
     hidden: PropTypes.array
+};
+
+/*
+ * This is a helper method used by both champions and winners since data rendering
+ * is the same for both listings. It is a customer filter with a 'hidden' array to omit
+ * fields that we don't want to show
+ */
+export const DataRow = ({ item, hidden, rowClass }) => <React.Fragment>
+    { Object.keys(item).map((key, idx) =>
+        // short-circuiting style
+        !hidden.includes(key) && <div className={rowClass} key={idx}>{item[key]}</div>)
+    }
+</React.Fragment>;
+
+DataRow.propTypes = {
+    item: PropTypes.object,
+    hidden: PropTypes.array,
+    rowClass: PropTypes.string
 };

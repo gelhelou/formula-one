@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
-import { Headings } from '../../utils/helper';
+import { Headings, DataRow } from '../../utils/helper';
 
 /**
  * This is a dynamic view. It responds dynamically to whatever data is being passed in winners.
@@ -24,10 +24,7 @@ export const SeasonWinnersView = ({
                     return <div
                         key={idx}
                         className={`winner-row ${item.driverId === championId ? 'champion-highlight' : ''}`}>
-                            { Object.keys(item).map((key, idx) =>
-                                // short-circuiting style
-                                key !== 'driverId' && <div className="winner-data" key={idx}>{item[key]}</div>)
-                            }
+                            <DataRow item={item} hidden={['driverId']} rowClass={'winner-data'} />
                     </div>
                 })
             }

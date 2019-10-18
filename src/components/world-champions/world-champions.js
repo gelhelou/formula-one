@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Headings } from '../../utils/helper';
+import { Headings, DataRow } from '../../utils/helper';
 import { SeasonWinnersView } from '../season-winners/season-winners';
 
 /**
@@ -25,9 +25,7 @@ export const WorldChampionsView = ({
                         className="champion-row"
                         onClick={() => onRowClicked(item, idx)}
                     >
-                        { Object.keys(item).map((key, idx) =>
-                            // short-circuiting style
-                            key !== 'driverId' && <div className="champion-data" key={idx}>{item[key]}</div>) }
+                        <DataRow item={item} hidden={['driverId']} rowClass={'champion-data'} />
                     </div>
                     {
                         (showSeasonWinnersIndex === idx) && <SeasonWinnersView
