@@ -27,6 +27,9 @@
     .champion-row {
         display: flex;
     }
+    .champion-row:hover {
+        cursor: pointer;
+    }
     .champion-row > div {
         flex: 1 0;
         box-sizing: border-box;
