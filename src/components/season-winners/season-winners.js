@@ -30,7 +30,7 @@ export const SeasonWinnersView = ({
                 })
             }
         </div>
-    </div> : <div className="winners-loader"><Loader type="ThreeDots" color="green" height={30} width={30} /></div>}
+    </div> : <div className="winners-loader"><Loader type="ThreeDots" color="green" height={40} width={40} /></div>}
 </React.Fragment>;
 
 SeasonWinnersView.propTypes = {
