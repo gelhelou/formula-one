@@ -39,7 +39,7 @@ export class App extends React.Component {
 
         // check data is available, if not render a nice loader
         if (!this.isDataAvailable()) return <div className="app-loader">
-            <Loader type="ThreeDots" color="green" height={100} width={100} />
+            <Loader type="ThreeDots" color="green" height={80} width={80} />
         </div>;
 
         return <WorldChampions
