@@ -1,21 +1,24 @@
+@import "../../styles/variables";
+
 .season-winners-wrapper {
     .season-winners-title {
         margin: 15px;
         font-weight: bold;
+        font-size: $font-size-base;
     }
     .season-winners-listing {
-        font-family: "Helvetica", sans-serif;
+        font-family: $font-family-sans-serif;
         border-collapse: collapse;
         margin: 15px;
-        box-shadow: 0 0 15px #aaa;
-        font-size: 14px;
+        box-shadow: 0 0 15px $shadow-color;
+        font-size: $font-size-base;
     }
     .season-winners-listing > .headings {
         display: flex;
         .heading {
             flex: 1 0;
             box-sizing: border-box;
-            background: green;
+            background: $winner-primary-color;
             color: white;
             padding: 10px;
             text-align: left;
@@ -26,15 +29,15 @@
             display: flex;
         }
         .winner-row.champion-highlight {
-            background-color: gold;
-            color: green;
+            background-color: $champion-secondary-color;
+            color: $winner-primary-color;
         }
         .winner-row > div {
             flex: 1 0;
             box-sizing: border-box;
             padding: 10px;
             text-align: left;
-            border: 1px solid green;
+            border: 1px solid $winner-primary-color;
         }
     }
 }

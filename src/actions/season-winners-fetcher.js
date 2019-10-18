@@ -1,7 +1,7 @@
 import { API_BASE } from '../../config';
 import {
-    fetchSeasonWinnersSuccess, 
-    fetchSeasonWinnersFail, 
+    fetchSeasonWinnersSuccess,
+    fetchSeasonWinnersFail,
     fetchSeasonWinnersPending
 } from './season-winners';
 

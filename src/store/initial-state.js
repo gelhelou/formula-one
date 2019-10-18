@@ -1,6 +1,6 @@
 /**
  * The initial state of the app.
- * No pending requests, and the champions and winners are empty.
+ * No pending requests, the champions and winners are empty, and error is null (no error).
  */
 export default {
     pending: {

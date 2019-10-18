@@ -1,13 +1,15 @@
+@import "../../styles/variables";
+
 .world-champions-wrapper {
-    font-family: "Helvetica", sans-serif;
+    font-family: $font-family-sans-serif;
     border-collapse: collapse;
     margin: 50px auto;
     width: 50%;
-    font-size: 14px;
+    font-size: $font-size-base;
 
     #world-champions-title {
         margin-bottom: 20px;
-        font-size: 22px;
+        font-size: $font-size-title;
     }
 }
 
@@ -16,8 +18,8 @@
     .heading {
         flex: 1 0;
         box-sizing: border-box;
-        background: goldenrod;
-        color: white;
+        background: $champion-primary-color;
+        color: $background-primary-color;
         padding: 10px;
         text-align: left;
         min-width: 100px;
@@ -34,10 +36,10 @@
     .champion-row > div {
         flex: 1 0;
         box-sizing: border-box;
-        background: white;
+        background: $background-primary-color;
         padding: 10px;
         text-align: left;
-        border: 1px solid goldenrod;
+        border: 1px solid $champion-primary-color;
         min-width: 100px;
     }
 }
