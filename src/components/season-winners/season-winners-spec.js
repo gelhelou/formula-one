@@ -49,6 +49,8 @@ describe('SeasonWinnersView with data', () => {
     });
 
     it('renders with correct headings', () => {
+        const title = component.find('.season-winners-title');
+        expect(title.text()).to.equal('Season Winners');
         const headings = component.find('.headings .heading');
         expect(headings).to.have.length(2);
         expect(headings.at(0).text()).to.equal('DRIVER');

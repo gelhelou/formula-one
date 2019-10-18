@@ -15,6 +15,8 @@ export const SeasonWinnersView = ({
     championId, winners, loading
 }) => <React.Fragment>
     {!loading ? <div className="season-winners-wrapper">
+        <div className="season-winners-title">Season Winners</div>
+        <div className="season-winners-listing">
         {renderHeadings(winners[0], ['driverId'])}
         <div className="winners">
             {
@@ -30,7 +32,7 @@ export const SeasonWinnersView = ({
                 })
             }
         </div>
-    </div> : <div className="winners-loader"><Loader type="ThreeDots" color="green" height={40} width={40} /></div>}
+    </div></div> : <div className="winners-loader"><Loader type="ThreeDots" color="green" height={40} width={40} /></div>}
 </React.Fragment>;
 
 SeasonWinnersView.propTypes = {
