@@ -1,9 +1,11 @@
 import React from 'react';
+import 'jsdom-global/register';
 import { expect } from 'chai';
 import { spy } from 'sinon';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { SeasonWinnersView } from '../season-winners/season-winners';
 import WorldChampions, { WorldChampionsView } from './world-champions';
+import { Headings } from '../../utils/helper';
 
 const champions = [
     {
@@ -45,7 +47,7 @@ describe('WorldChampionsView without season winners', () => {
     const onRowClicked = spy();
 
     beforeEach(() => {
-        component = shallow(<WorldChampionsView
+        component = mount(<WorldChampionsView
             champions={champions}
             onRowClicked={onRowClicked}
         />)
@@ -57,13 +59,13 @@ describe('WorldChampionsView without season winners', () => {
     });
 
     it('renders with correct headings', () => {
-        const headings = component.find('.headings .heading');
+        const headings = component.find(Headings).find('.headings .heading');
         expect(headings).to.have.length(5);
-        expect(headings.at(0).text()).to.equal('YEAR');
-        expect(headings.at(1).text()).to.equal('DRIVER');
-        expect(headings.at(2).text()).to.equal('AGE');
-        expect(headings.at(3).text()).to.equal('NATIONALITY');
-        expect(headings.at(4).text()).to.equal('POINTS');
+        expect(headings.at(0).text()).to.equal(Object.keys(champions[0])[0].toUpperCase());
+        expect(headings.at(1).text()).to.equal(Object.keys(champions[0])[1].toUpperCase());
+        expect(headings.at(2).text()).to.equal(Object.keys(champions[0])[2].toUpperCase());
+        expect(headings.at(3).text()).to.equal(Object.keys(champions[0])[3].toUpperCase());
+        expect(headings.at(4).text()).to.equal(Object.keys(champions[0])[4].toUpperCase());
     });
 
     it('renders with correct champions data', () => {

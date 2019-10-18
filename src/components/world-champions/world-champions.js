@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { renderHeadings } from '../../utils/formatter';
+import { Headings } from '../../utils/helper';
 import { SeasonWinnersView } from '../season-winners/season-winners';
 
 /**
@@ -16,7 +16,7 @@ export const WorldChampionsView = ({
 }) => <React.Fragment>
     <div className="world-champions-wrapper">
         <div id="world-champions-title">F1 World Champions</div>
-        {renderHeadings(champions[0], ['driverId'])}
+        <Headings item={champions[0]} hidden={['driverId']} />
         <div className="champions">
             {
                 champions.map((item, idx) => {

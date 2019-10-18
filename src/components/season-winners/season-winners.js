@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
-import { renderHeadings } from '../../utils/formatter';
+import { Headings } from '../../utils/helper';
 
 /**
  * This is a dynamic view. It responds dynamically to whatever data is being passed in winners.
@@ -17,7 +17,7 @@ export const SeasonWinnersView = ({
     {!loading ? <div className="season-winners-wrapper">
         <div className="season-winners-title">Season Winners</div>
         <div className="season-winners-listing">
-        {renderHeadings(winners[0], ['driverId'])}
+        <Headings item={winners[0]} hidden={['driverId']} />
         <div className="winners">
             {
                 winners.map((item, idx) => {

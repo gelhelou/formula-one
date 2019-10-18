@@ -1,8 +1,10 @@
 import React from 'react';
+import 'jsdom-global/register';
 import { expect } from 'chai';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Loader from 'react-loader-spinner';
 import { SeasonWinnersView } from './season-winners';
+import { Headings } from "../../utils/helper";
 
 describe('SeasonWinnersView with no data', () => {
     let component;
@@ -41,7 +43,7 @@ describe('SeasonWinnersView with data', () => {
     const loading = false;
 
     beforeEach(() => {
-        component = shallow(<SeasonWinnersView
+        component = mount(<SeasonWinnersView
             loading={loading}
             championId={championId}
             winners={winners}
@@ -51,10 +53,10 @@ describe('SeasonWinnersView with data', () => {
     it('renders with correct headings', () => {
         const title = component.find('.season-winners-title');
         expect(title.text()).to.equal('Season Winners');
-        const headings = component.find('.headings .heading');
+        const headings = component.find(Headings).find('.headings .heading');
         expect(headings).to.have.length(2);
-        expect(headings.at(0).text()).to.equal('DRIVER');
-        expect(headings.at(1).text()).to.equal('CIRCUIT');
+        expect(headings.at(0).text()).to.equal(Object.keys(winners[0])[0].toUpperCase());
+        expect(headings.at(1).text()).to.equal(Object.keys(winners[0])[1].toUpperCase());
     });
 
     it('renders with correct winners data', () => {
