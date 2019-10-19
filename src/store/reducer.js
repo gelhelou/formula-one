@@ -1,3 +1,4 @@
+import { APP_REFRESH } from "../actions/app";
 import {
 	FETCH_WORLD_CHAMPIONS_SUCCESS,
 	FETCH_WORLD_CHAMPIONS_FAIL,
@@ -51,6 +52,11 @@ export const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				pending: { seasonWinners: true, worldChampions: false },
+			};
+		case APP_REFRESH:
+			return {
+				...state,
+				error: null
 			};
 		default:
 			return state;

@@ -10,3 +10,9 @@
     font-size: $font-size-title;
     color: $error-color;
 }
+
+.refresh-button {
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+}

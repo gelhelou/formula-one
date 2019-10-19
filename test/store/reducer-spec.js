@@ -9,6 +9,7 @@ import {
     getSeasonWinnersPending,
     getSeasonWinnersError
 } from '../../src/store/reducer';
+import { APP_REFRESH } from "../../src/actions/app";
 import {
     FETCH_WORLD_CHAMPIONS_FAIL,
     FETCH_WORLD_CHAMPIONS_PENDING,
@@ -131,7 +132,7 @@ describe('Root Reducer', () => {
         expect(rootReducer(state, action).error).to.deep.equal(anotherError);
     });
 
-    it('returns correct stae with FETCH_WORLD_CHAMPIONS_PENDING action type', () => {
+    it('returns correct state with FETCH_WORLD_CHAMPIONS_PENDING action type', () => {
         const action = { type: FETCH_WORLD_CHAMPIONS_PENDING };
         expect(rootReducer(state, action).pending.worldChampions).to.equal(true);
         expect(rootReducer(state, action).pending.seasonWinners).to.equal(false);
@@ -164,9 +165,14 @@ describe('Root Reducer', () => {
         expect(rootReducer(state, action).error).to.deep.equal(anotherError);
     });
 
-    it('returns correct stae with FETCH_SEASON_WINNERS_PENDING action type', () => {
+    it('returns correct state with FETCH_SEASON_WINNERS_PENDING action type', () => {
         const action = { type: FETCH_SEASON_WINNERS_PENDING };
         expect(rootReducer(state, action).pending.worldChampions).to.equal(false);
         expect(rootReducer(state, action).pending.seasonWinners).to.equal(true);
+    });
+
+    it('returns correct state with APP_REFRESH action type', () => {
+        const action = { type: APP_REFRESH };
+        expect(rootReducer(state, action).error).to.equal(null)
     });
 });
