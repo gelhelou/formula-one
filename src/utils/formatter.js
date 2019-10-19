@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 /**
- * Helper method that extracts the age of the driver givcen his date of birth
+ * Helper method that extracts the age of the driver given his date of birth
 */
 export const getAge = (dateOfBirth) => moment().diff(new Date(dateOfBirth), 'years');
 
