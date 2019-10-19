@@ -1,5 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const { resolve } = require('path')
+const { resolve } = require('path');
 
 module.exports = {
   watch: true,
@@ -22,7 +22,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.s(a|c)ss$/,
+        test: /\.s([ac])ss$/,
         use: [
           {
             loader: "style-loader"
