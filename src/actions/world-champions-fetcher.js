@@ -9,10 +9,14 @@ import { getAge } from '../utils/formatter';
 export const fetchWorldChampions = () => async (dispatch) => {
     dispatch(fetchWorldChampionsPending());
     try {
+        // CURRENT_YEAR is used in the loop for fetch promises with Math.min to avoid errors
+        // when END_YEAR is set to a value greater than the current year
+        const CURRENT_YEAR = new Date().getFullYear();
+
         // Using promises in parallel makes sense in this project.
         // Data sets are independent so I'm firing all requests together to the API
         const rawPromises = [];
-        for (let i = START_YEAR; i <= END_YEAR; i++) {
+        for (let i = START_YEAR; i <= Math.min(END_YEAR, CURRENT_YEAR); i++) {
             rawPromises.push(fetch(`${API_BASE}/${i}/driverStandings/1.json`));
         }
         const responses = await Promise.all(rawPromises);
