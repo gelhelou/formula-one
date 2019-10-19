@@ -5,11 +5,13 @@ import { Headings, DataRow } from '../../utils/helper';
 
 /**
  * This is a dynamic view. It responds dynamically to whatever data is being passed in winners.
- * No predefined headings. The only conditional check is on driverId for it not to be rendered.
- * The latter is passed to highlight champion wins inside the season winners view.
+ * No predefined headings.
  *
- * NOTE: Another approach would have been to have a filter that validates if the field is to be rendered
- * as heading, I've opted for the conditional check in this case
+ * Headings component takes care of the headings to be populated.
+ * DataRow component takes care of each row to be populated.
+ *
+ * Notice that both Headings and DataRow have 'hidden' property, which acts as a filter on the field 'driverId',
+ * required to highlight the champion row in winners
  */
 export const SeasonWinnersView = ({
     championId, winners, loading

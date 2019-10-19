@@ -2,14 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Headings, DataRow } from '../../utils/helper';
 import { SeasonWinnersView } from '../season-winners/season-winners';
+import Loader from 'react-loader-spinner';
 
 /**
  * This is a dynamic view. It responds dynamically to whatever data is being passed in champions.
- * No predefined headings. The only conditional check is on driverId for it not to be rendered.
- * The latter is passed to highlight champion wins inside the season winners view.
+ * No predefined headings.
  *
- * NOTE: Another approach would have been to have a filter that validates if the field is to be rendered
- * as heading, I've opted for the conditional check in this case
+ * Headings component takes care of the headings to be populated.
+ * DataRow component takes care of each row to be populated.
+ *
+ * Notice that both Headings and DataRow have 'hidden' property, which acts as a filter on the field 'driverId',
+ * required to highlight the champion row in winners
  */
 export const WorldChampionsView = ({
     champions, seasonWinners, seasonWinnersLoading, showSeasonWinnersIndex, onRowClicked
@@ -69,6 +72,14 @@ export default class WorldChampions extends React.Component {
     }
 
     /**
+      * When componentDidMount lifecycle state, fetch world champions data
+      */
+    componentDidMount () {
+        const { fetchWorldChampions } = this.props;
+        fetchWorldChampions();
+    }
+
+    /**
      * This function is passed down to WorldChampionsView to be fired whenever a row is clicked.
      * It has the role of fetching season winners and hide/show the SeasonWinnersView
      */
@@ -85,7 +96,10 @@ export default class WorldChampions extends React.Component {
     render() {
         const { onRowClicked } = this;
         const { showSeasonWinnersIndex } = this.state;
-        const { champions, seasonWinners, seasonWinnersPending } = this.props;
+        const { champions, championsPending, seasonWinners, seasonWinnersPending } = this.props;
+
+        // if data is still loading for champions, just show the loader
+        if (championsPending) return <div className="champions-loader"><Loader type="ThreeDots" color="green" height={80} width={80} /></div>;
 
         return <WorldChampionsView
             champions={champions}
@@ -93,19 +107,22 @@ export default class WorldChampions extends React.Component {
             seasonWinnersLoading={seasonWinnersPending}
             showSeasonWinnersIndex={showSeasonWinnersIndex}
             onRowClicked={onRowClicked}
-        />
+        />;
     }
 }
 
 WorldChampions.propTypes = {
     champions: PropTypes.array,
+    championsPending: PropTypes.bool,
     seasonWinners: PropTypes.array,
     seasonWinnersPending: PropTypes.bool,
+    fetchWorldChampions: PropTypes.func,
     fetchSeasonWinners: PropTypes.func
 };
 
 WorldChampions.defaultProps = {
     champions: [],
+    championsPending: false,
     seasonWinners: [],
     seasonWinnersPending: false
 };

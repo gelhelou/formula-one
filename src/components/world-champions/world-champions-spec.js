@@ -3,6 +3,7 @@ import 'jsdom-global/register';
 import { expect } from 'chai';
 import { spy } from 'sinon';
 import { shallow, mount } from 'enzyme';
+import Loader from 'react-loader-spinner';
 import { SeasonWinnersView } from '../season-winners/season-winners';
 import WorldChampions, { WorldChampionsView } from './world-champions';
 import { Headings } from '../../utils/helper';
@@ -139,19 +140,27 @@ describe('WorldChampionsView with season winners', () => {
 describe('WorldChampions', () => {
     let component;
     let fetchSeasonWinners;
+    let fetchWorldChampions;
 
     beforeEach(() => {
         fetchSeasonWinners = spy();
+        fetchWorldChampions = spy();
         component = shallow(<WorldChampions
             champions={champions}
             seasonWinners={winners}
             seasonWinnersPending={false}
             fetchSeasonWinners={fetchSeasonWinners}
+            fetchWorldChampions={fetchWorldChampions}
         />)
     });
 
     it('has correct initial state', () => {
         expect(component.state().showSeasonWinnersIndex).to.equal(null);
+    });
+
+    it('calls fetchWorldChampions on componentDidMount', () => {
+        component.instance().componentDidMount();
+        expect(fetchWorldChampions.calledWith()).to.equal(true);
     });
 
     it('has onRowClicked that changes the state and fetches data', () => {
@@ -167,5 +176,12 @@ describe('WorldChampions', () => {
         expect(championsView.props().seasonWinnersLoading).to.equal(false);
         expect(championsView.props().showSeasonWinnersIndex).to.equal(null);
         expect(championsView.props().onRowClicked).to.equal(component.instance().onRowClicked);
+    });
+
+    it('renders Loader', () => {
+        component.setProps({ championsPending: true });
+        component.update();
+        const loader = component.find('.champions-loader').find(Loader);
+        expect(loader).to.have.length(1);
     });
 });
