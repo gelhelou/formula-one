@@ -10,6 +10,10 @@ describe('utils formatter', () => {
     });
 
     describe('isObjectEmpty', () => {
+        it('returns true if object is null', () => {
+            expect(isObjectEmpty(null)).to.equal(true);
+        });
+
         it('returns true if object is empty', () => {
             expect(isObjectEmpty({})).to.equal(true);
         });
