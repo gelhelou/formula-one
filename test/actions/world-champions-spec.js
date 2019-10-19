@@ -35,7 +35,7 @@ describe('World Champions Actions', () => {
                 nationality: 'some-nationality-3',
                 points: 'some-points-3',
                 driverId: 'some-driver-id-3'
-            },
+            }
         ];
         const expectedAction = {
             type: FETCH_WORLD_CHAMPIONS_SUCCESS,

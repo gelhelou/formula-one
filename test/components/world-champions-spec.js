@@ -32,7 +32,7 @@ const champions = [
         nationality: 'some-nationality-3',
         points: 'some-points-3',
         driverId: 'some-driver-id-3'
-    },
+    }
 ];
 
 const winners = [
