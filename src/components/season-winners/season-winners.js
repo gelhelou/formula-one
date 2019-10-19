@@ -14,10 +14,10 @@ import { Headings, DataRow } from '../../utils/helper';
  * required to highlight the champion row in winners
  */
 export const SeasonWinnersView = ({
-    championId, winners, loading
+    championId, season, winners, loading
 }) => <React.Fragment>
     {!loading ? <div className="season-winners-wrapper">
-        <div className="season-winners-title">Season Winners</div>
+        <div className="season-winners-title">{`Season ${season} Winners`}</div>
         <div className="season-winners-listing">
         <Headings item={winners.length > 0 ? winners[0] : {}} hidden={['driverId']} />
         <div className="winners">
@@ -36,12 +36,14 @@ export const SeasonWinnersView = ({
 
 SeasonWinnersView.propTypes = {
     championId: PropTypes.string,
+    season: PropTypes.string,
     winners: PropTypes.array,
     loading: PropTypes.bool
 };
 
 SeasonWinnersView.defaultProps = {
     championId: null,
+    season: "",
     winners: [],
     loading: false
 };

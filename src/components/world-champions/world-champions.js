@@ -33,6 +33,7 @@ export const WorldChampionsView = ({
                     {
                         (showSeasonWinnersIndex === idx) && <SeasonWinnersView
                             championId={item.driverId}
+                            season={item.year}
                             winners={seasonWinners}
                             loading={seasonWinnersLoading}
                         />

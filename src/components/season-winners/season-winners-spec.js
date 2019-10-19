@@ -46,13 +46,14 @@ describe('SeasonWinnersView with data', () => {
         component = mount(<SeasonWinnersView
             loading={loading}
             championId={championId}
+            season={"2019"}
             winners={winners}
         />)
     });
 
     it('renders with correct headings', () => {
         const title = component.find('.season-winners-title');
-        expect(title.text()).to.equal('Season Winners');
+        expect(title.text()).to.equal('Season 2019 Winners');
         const headings = component.find(Headings).find('.headings .heading');
         expect(headings).to.have.length(2);
         expect(headings.at(0).text()).to.equal(Object.keys(winners[0])[0].toUpperCase());
