@@ -23,7 +23,7 @@ export const fetchSeasonWinners = (season) => async (dispatch) => {
         dispatch(fetchSeasonWinnersSuccess(winners));
     } catch (error) {
         dispatch(fetchSeasonWinnersFail({
-            message: 'There was a poblem fetching results for the season!'
+            message: 'There was a problem fetching results for the season!'
         }));
     }
 };
