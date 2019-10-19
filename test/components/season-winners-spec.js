@@ -80,3 +80,23 @@ describe('SeasonWinnersView with data', () => {
         expect(winner2Data.at(1).text()).to.equal(winners[1].circuit);
     });
 });
+
+describe('SeasonWinnersView with empty winners', () => {
+    let component;
+    const championId = 'some-champion-id';
+    const loading = false;
+
+    beforeEach(() => {
+        component = mount(<SeasonWinnersView
+            loading={loading}
+            championId={championId}
+            season={"2019"}
+            winners={[]}
+        />)
+    });
+
+    it('renders with correct headings', () => {
+        const headingsComp = component.find(Headings);
+        expect(headingsComp.props().item).to.deep.equal({});
+    });
+});

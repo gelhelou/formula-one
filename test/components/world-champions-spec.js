@@ -137,6 +137,23 @@ describe('WorldChampionsView with season winners', () => {
     });
 });
 
+describe('WorldChampionsView without champions', () => {
+    let component;
+
+    beforeEach(() => {
+        component = mount(<WorldChampionsView
+            champions={[]}
+            seasonWinners={winners}
+            showSeasonWinnersIndex={0}
+        />)
+    });
+
+    it('renders with correct headings', () => {
+        const headingsComp = component.find(Headings);
+        expect(headingsComp.props().item).to.deep.equal({});
+    });
+});
+
 describe('WorldChampions', () => {
     let component;
     let fetchSeasonWinners;
@@ -167,6 +184,14 @@ describe('WorldChampions', () => {
         component.instance().onRowClicked(champions[1], 1);
         expect(component.state().showSeasonWinnersIndex).to.equal(1);
         expect(fetchSeasonWinners.calledWith(champions[1].year)).to.equal(true);
+    });
+
+    it('sets the showSeasonWinnersIndex to null if showSeasonWinnersIndex and passed idx are identical', () => {
+        component.instance().onRowClicked(champions[1], 1);
+        expect(component.state().showSeasonWinnersIndex).to.equal(1);
+        // click it again
+        component.instance().onRowClicked(champions[1], 1);
+        expect(component.state().showSeasonWinnersIndex).to.equal(null);
     });
 
     it('renders WorldChampionsView with correct props', () => {
