@@ -86,8 +86,11 @@ export default class WorldChampions extends React.Component {
      */
     onRowClicked(item, idx) {
         const { showSeasonWinnersIndex } = this.state;
+
+        // if showSeasonWinnersIndex === idx, should collapse SeasonWinnersView
         this.setState({ showSeasonWinnersIndex: (showSeasonWinnersIndex === idx) ? null : idx });
 
+        // returning to collapse
         if (showSeasonWinnersIndex === idx) return;
 
         const { fetchSeasonWinners } = this.props;
