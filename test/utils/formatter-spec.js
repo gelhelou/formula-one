@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import { getAge, isObjectEmpty } from './formatter';
+import { getAge, isObjectEmpty } from '../../src/utils/formatter';
 
-describe('utils', () => {
+describe('utils formatter', () => {
     describe('getAge', () => {
         it('returns the correct age based on date of birth', () => {
             expect(getAge('1989-02-06')).to.equal(30);

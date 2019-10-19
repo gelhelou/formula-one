@@ -2,8 +2,8 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16'
 import Enzyme, { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
-import { App } from './app';
-import WorldChampions from './world-champions/world-champions-container';
+import { App } from '../../src/components/app';
+import WorldChampions from '../../src/components/world-champions/world-champions-container';
 
 Enzyme.configure({ adapter: new Adapter() });
 

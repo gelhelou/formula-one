@@ -3,8 +3,8 @@ import 'jsdom-global/register';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import Loader from 'react-loader-spinner';
-import { SeasonWinnersView } from './season-winners';
-import { Headings } from "../../utils/helper";
+import { SeasonWinnersView } from '../../src/components/season-winners/season-winners';
+import { Headings } from "../../src/utils/helper";
 
 describe('SeasonWinnersView with no data', () => {
     let component;

@@ -4,9 +4,9 @@ import { expect } from 'chai';
 import { spy } from 'sinon';
 import { shallow, mount } from 'enzyme';
 import Loader from 'react-loader-spinner';
-import { SeasonWinnersView } from '../season-winners/season-winners';
-import WorldChampions, { WorldChampionsView } from './world-champions';
-import { Headings } from '../../utils/helper';
+import { SeasonWinnersView } from '../../src/components/season-winners/season-winners';
+import WorldChampions, { WorldChampionsView } from '../../src/components/world-champions/world-champions';
+import { Headings } from '../../src/utils/helper';
 
 const champions = [
     {
