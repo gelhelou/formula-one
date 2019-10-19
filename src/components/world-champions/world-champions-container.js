@@ -15,13 +15,11 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     fetchSeasonWinners: fetchSeasonWinners
 }, dispatch);
 
-const mapStateToProps = state => {
-    return {
-        champions: getWorldChampions(state),
-        championsPending: getWorldChampionsPending(state),
-        seasonWinners: getSeasonWinners(state),
-        seasonWinnersPending: getSeasonWinnersPending(state)
-    }
-};
+const mapStateToProps = state => ({
+    champions: getWorldChampions(state),
+    championsPending: getWorldChampionsPending(state),
+    seasonWinners: getSeasonWinners(state),
+    seasonWinnersPending: getSeasonWinnersPending(state)
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(WorldChampions)

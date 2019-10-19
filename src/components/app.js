@@ -27,10 +27,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     appRefresh: appRefresh
 }, dispatch);
 
-const mapStateToProps = state => {
-    return {
-        error: getWorldChampionsError(state),
-    }
-};
+const mapStateToProps = state => ({
+    error: getWorldChampionsError(state),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
