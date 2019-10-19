@@ -17,7 +17,7 @@ import initialState from './initial-state';
  * In a more dense project, it would be reasonable to have multiple reducers
  * and combine them with redux function 'combineReducers'
  */
-export const rootReducer = (state = initialState, action) => {
+export const rootReducer = (state = initialState, action = {}) => {
 	switch (action.type) {
 		case FETCH_WORLD_CHAMPIONS_SUCCESS:
 			return {

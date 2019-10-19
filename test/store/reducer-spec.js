@@ -20,6 +20,7 @@ import {
     FETCH_SEASON_WINNERS_PENDING,
     FETCH_SEASON_WINNERS_SUCCESS
 } from "../../src/actions/season-winners";
+import initialState from '../../src/store/initial-state';
 
 const state = {
     worldChampions: [
@@ -94,6 +95,10 @@ describe('Selectors', () => {
 });
 
 describe('Root Reducer', () => {
+    it('return initial state with unprovided state through default', () => {
+        expect(rootReducer()).to.deep.equal(initialState);
+    });
+
     it('returns same state with default', () => {
         const action = { type: 'UNKNOWN_ACTION' };
         expect(rootReducer(state, action)).to.deep.equal(state);
