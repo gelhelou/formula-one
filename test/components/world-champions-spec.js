@@ -60,7 +60,7 @@ describe('WorldChampionsView without season winners', () => {
     });
 
     it('renders with correct headings', () => {
-        const headings = component.find(Headings).find('.headings .heading');
+        const headings = component.find(Headings).find({ 'test-element': 'headings' }).find({ 'test-element': 'heading' });
         expect(headings).to.have.length(5);
         expect(headings.at(0).text()).to.equal(Object.keys(champions[0])[0].toUpperCase());
         expect(headings.at(1).text()).to.equal(Object.keys(champions[0])[1].toUpperCase());
@@ -70,14 +70,14 @@ describe('WorldChampionsView without season winners', () => {
     });
 
     it('renders with correct champions data', () => {
-        const championsWrapper = component.find('.champions');
+        const championsWrapper = component.find({ 'test-element': 'champions' });
         expect(championsWrapper).to.have.length(1);
 
-        const championRows = championsWrapper.find('.champion-row');
+        const championRows = championsWrapper.find({ 'test-element': 'champion-row'});
         expect(championRows).to.have.length(3);
 
         const champion1 = championRows.at(0);
-        const champion1Data = champion1.find('.champion-data');
+        const champion1Data = champion1.find({ 'test-element': 'champion-data'});
         expect(champion1Data.at(0).text()).to.equal(champions[0].year);
         expect(champion1Data.at(1).text()).to.equal(champions[0].driver);
         expect(champion1Data.at(2).text()).to.equal(champions[0].age);
@@ -85,7 +85,7 @@ describe('WorldChampionsView without season winners', () => {
         expect(champion1Data.at(4).text()).to.equal(champions[0].points);
 
         const champion2 = championRows.at(1);
-        const champion2Data = champion2.find('.champion-data');
+        const champion2Data = champion2.find({ 'test-element': 'champion-data'});
         expect(champion2Data.at(0).text()).to.equal(champions[1].year);
         expect(champion2Data.at(1).text()).to.equal(champions[1].driver);
         expect(champion2Data.at(2).text()).to.equal(champions[1].age);
@@ -93,7 +93,7 @@ describe('WorldChampionsView without season winners', () => {
         expect(champion2Data.at(4).text()).to.equal(champions[1].points);
 
         const champion3 = championRows.at(2);
-        const champion3Data = champion3.find('.champion-data');
+        const champion3Data = champion3.find({ 'test-element': 'champion-data'});
         expect(champion3Data.at(0).text()).to.equal(champions[2].year);
         expect(champion3Data.at(1).text()).to.equal(champions[2].driver);
         expect(champion3Data.at(2).text()).to.equal(champions[2].age);
@@ -102,8 +102,8 @@ describe('WorldChampionsView without season winners', () => {
     });
 
     it('calls onRowClicked with correct arguments when champion row is clicked', () => {
-        const championsWrapper = component.find('.champions');
-        const championRows = championsWrapper.find('.champion-row');
+        const championsWrapper = component.find({ 'test-element': 'champions' });
+        const championRows = championsWrapper.find({ 'test-element': 'champion-row'});
 
         const champion1 = championRows.at(0);
         champion1.props().onClick();
@@ -206,7 +206,7 @@ describe('WorldChampions', () => {
     it('renders Loader', () => {
         component.setProps({ championsPending: true });
         component.update();
-        const loader = component.find('.champions-loader').find(Loader);
+        const loader = component.find({ 'test-element': 'champions-loader' }).find(Loader);
         expect(loader).to.have.length(1);
     });
 });

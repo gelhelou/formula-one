@@ -10,23 +10,25 @@ import { Headings, DataRow } from '../../utils/helper';
  * Headings component takes care of the headings to be populated.
  * DataRow component takes care of each row to be populated.
  *
- * Notice that both Headings and DataRow have 'hidden' property, which acts as a filter on the field 'driverId',
+ * Notice that both Headings and DataRow have 'hiddenColumns' property, which acts as a filter on the field 'driverId',
  * required to highlight the champion row in winners
  */
 export const SeasonWinnersView = ({
     championId, season, winners, loading
 }) => <React.Fragment>
-    {!loading ? <div className="season-winners-wrapper">
-        <div className="season-winners-title">{`Season ${season} Winners`}</div>
+    {!loading ? <div className="season-winners-wrapper" test-element="season-winners-wrapper">
+        <div id="season-winners-title" test-element="season-winners-title">{`Season ${season} Winners`}</div>
         <div className="season-winners-listing">
-        <Headings item={winners.length > 0 ? winners[0] : {}} hidden={['driverId']} />
-        <div className="winners">
+        <Headings item={winners.length > 0 ? winners[0] : {}} hiddenColumns={['driverId']} />
+        <div className="winners" test-element="winners">
             {
                 winners.map((item, idx) => {
                     return <div
                         key={idx}
-                        className={`winner-row ${item.driverId === championId ? 'champion-highlight' : ''}`}>
-                            <DataRow item={item} hidden={['driverId']} rowClass={'winner-data'} />
+                        className={`table-row ${item.driverId === championId ? 'champion-highlight' : ''}`}
+                        test-element="winner-row"
+                    >
+                            <DataRow item={item} hiddenColumns={['driverId']} rowClass={'winner-data'} />
                     </div>
                 })
             }

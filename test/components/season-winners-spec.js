@@ -20,7 +20,7 @@ describe('SeasonWinnersView with no data', () => {
     });
 
     it('does not have a winners table when loading is true', () => {
-        const table = component.find('.season-winners-wrapper');
+        const table = component.find({ 'test-element': 'season-winners-wrapper' });
         expect(table).to.have.length(0);
     });
 });
@@ -52,30 +52,30 @@ describe('SeasonWinnersView with data', () => {
     });
 
     it('renders with correct headings', () => {
-        const title = component.find('.season-winners-title');
+        const title = component.find({ 'test-element': 'season-winners-title' });
         expect(title.text()).to.equal('Season 2019 Winners');
-        const headings = component.find(Headings).find('.headings .heading');
+        const headings = component.find(Headings).find({ 'test-element': 'headings' }).find({ 'test-element': 'heading' });
         expect(headings).to.have.length(2);
         expect(headings.at(0).text()).to.equal(Object.keys(winners[0])[0].toUpperCase());
         expect(headings.at(1).text()).to.equal(Object.keys(winners[0])[1].toUpperCase());
     });
 
     it('renders with correct winners data', () => {
-        const winnersWrapper = component.find('.winners');
+        const winnersWrapper = component.find({ 'test-element': 'winners' });
         expect(winnersWrapper).to.have.length(1);
 
-        const winnerRows = winnersWrapper.find('.winner-row');
+        const winnerRows = winnersWrapper.find({ 'test-element': 'winner-row' });
         expect(winnerRows).to.have.length(2);
 
         const winner1 = winnerRows.at(0);
         expect(winner1.hasClass('champion-highlight')).to.equal(true);
-        const winner1Data = winner1.find('.winner-data');
+        const winner1Data = winner1.find({ 'test-element': 'winner-data' });
         expect(winner1Data.at(0).text()).to.equal(winners[0].driver);
         expect(winner1Data.at(1).text()).to.equal(winners[0].circuit);
 
         const winner2 = winnerRows.at(1);
         expect(winner2.hasClass('champion-highlight')).to.equal(false);
-        const winner2Data = winner2.find('.winner-data');
+        const winner2Data = winner2.find({ 'test-element': 'winner-data' });
         expect(winner2Data.at(0).text()).to.equal(winners[1].driver);
         expect(winner2Data.at(1).text()).to.equal(winners[1].circuit);
     });

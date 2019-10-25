@@ -11,7 +11,7 @@ import Loader from 'react-loader-spinner';
  * Headings component takes care of the headings to be populated.
  * DataRow component takes care of each row to be populated.
  *
- * Notice that both Headings and DataRow have 'hidden' property, which acts as a filter on the field 'driverId',
+ * Notice that both Headings and DataRow have 'hiddenColumns' property, which acts as a filter on the field 'driverId',
  * required to highlight the champion row in winners
  */
 export const WorldChampionsView = ({
@@ -19,28 +19,31 @@ export const WorldChampionsView = ({
 }) => <React.Fragment>
     <div className="world-champions-wrapper">
         <div id="world-champions-title">F1 World Champions</div>
-        <Headings item={champions.length > 0 ? champions[0] : {}} hidden={['driverId']} />
-        <div className="champions">
-            {
-                champions.map((item, idx) => {
-                    return <React.Fragment><div
-                        key={idx}
-                        className="champion-row"
-                        onClick={() => onRowClicked(item, idx)}
-                    >
-                        <DataRow item={item} hidden={['driverId']} rowClass={'champion-data'} />
-                    </div>
-                    {
-                        (showSeasonWinnersIndex === idx) && <SeasonWinnersView
-                            championId={item.driverId}
-                            season={item.year}
-                            winners={seasonWinners}
-                            loading={seasonWinnersLoading}
-                        />
-                    }
-                    </React.Fragment>
-                })
-            }
+        <div className="world-champions-listing">
+            <Headings item={champions.length > 0 ? champions[0] : {}} hiddenColumns={['driverId']} />
+            <div className="champions" test-element="champions">
+                {
+                    champions.map((item, idx) => {
+                        return <React.Fragment><div
+                            key={idx}
+                            className="table-row"
+                            onClick={() => onRowClicked(item, idx)}
+                            test-element="champion-row"
+                        >
+                            <DataRow item={item} hiddenColumns={['driverId']} rowClass={'champion-data'} />
+                        </div>
+                        {
+                            (showSeasonWinnersIndex === idx) && <SeasonWinnersView
+                                championId={item.driverId}
+                                season={item.year}
+                                winners={seasonWinners}
+                                loading={seasonWinnersLoading}
+                            />
+                        }
+                        </React.Fragment>
+                    })
+                }
+            </div>
         </div>
     </div>
 </React.Fragment>;
@@ -103,7 +106,10 @@ export default class WorldChampions extends React.Component {
         const { champions, championsPending, seasonWinners, seasonWinnersPending } = this.props;
 
         // if data is still loading for champions, just show the loader
-        if (championsPending) return <div className="champions-loader"><Loader type="ThreeDots" color="green" height={80} width={80} /></div>;
+        if (championsPending) return <div
+            className="champions-loader"
+            test-element="champions-loader"
+        ><Loader type="ThreeDots" color="green" height={80} width={80} /></div>;
 
         return <WorldChampionsView
             champions={champions}
