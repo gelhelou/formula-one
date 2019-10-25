@@ -6,18 +6,18 @@ import PropTypes from 'prop-types';
  * is the same for both listings. It is a custom filter with a 'hidden' array to omit
  * fields that we don't want to show
  */
-export const Headings = ({ item, hidden }) => <React.Fragment>
-    <div className="headings">
+export const Headings = ({ item, hiddenColumns }) => <React.Fragment>
+    <div className="headings" test-element="headings">
     {
         Object.keys(item).map((key, idx) =>
-            !hidden.includes(key) && <div key={idx} className="heading">{key.toUpperCase()}</div>)
+            !hiddenColumns.includes(key) && <div key={idx} className="heading" test-element="heading">{key.toUpperCase()}</div>)
     }
     </div>
 </React.Fragment>;
 
 Headings.propTypes = {
     item: PropTypes.object,
-    hidden: PropTypes.array
+    hiddenColumns: PropTypes.array
 };
 
 /*
@@ -25,15 +25,15 @@ Headings.propTypes = {
  * is the same for both listings. It is a customer filter with a 'hidden' array to omit
  * fields that we don't want to show
  */
-export const DataRow = ({ item, hidden, rowClass }) => <React.Fragment>
+export const DataRow = ({ item, hiddenColumns, rowClass }) => <React.Fragment>
     { Object.keys(item).map((key, idx) =>
         // short-circuiting style
-        !hidden.includes(key) && <div className={rowClass} key={idx}>{item[key]}</div>)
+        !hiddenColumns.includes(key) && <div className={rowClass} key={idx} test-element={rowClass}>{item[key]}</div>)
     }
 </React.Fragment>;
 
 DataRow.propTypes = {
     item: PropTypes.object,
-    hidden: PropTypes.array,
+    hiddenColumns: PropTypes.array,
     rowClass: PropTypes.string
 };
