@@ -8,11 +8,14 @@ import { getAge } from '../utils/formatter';
 
 export const fetchWorldChampions = (startYear = START_YEAR, endYear = END_YEAR) => async (dispatch) => {
     dispatch(fetchWorldChampionsPending());
-    try {
-        // CURRENT_YEAR is used in the loop for fetch promises with Math.min to avoid errors
-        // when END_YEAR is set to a value greater than the current year
-        const currentYear = new Date().getFullYear();
 
+    // CURRENT_YEAR is used in the loop for fetch promises with Math.min to avoid errors
+    // when END_YEAR is set to a value greater than the current year
+    const currentYear = new Date().getFullYear();
+    let rawData;
+    let data;
+
+    try {
         // Using promises in parallel makes sense in this project.
         // Data sets are independent so I'm firing all requests together to the API
         const rawPromises = [];
@@ -21,11 +24,17 @@ export const fetchWorldChampions = (startYear = START_YEAR, endYear = END_YEAR) 
         }
         const responses = await Promise.all(rawPromises);
         const resPromises = responses.map(res => res.json());
-        const rawData = await Promise.all(resPromises);
 
-        const data = rawData.map(seasonData => {
+        rawData = await Promise.all(resPromises);
+    } catch(error) {
+        return dispatch(fetchWorldChampionsFail({
+            message: "Could not fetch world champions data!"
+        }))
+    }
+
+    try {
+        data = rawData.map(seasonData => {
             const driverData = seasonData.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].Driver;
-
             // Despite driverId not being rendered on the UI, it is being passed to be able
             // to highlight the champion winning race on the season winners view
             return {
@@ -37,10 +46,11 @@ export const fetchWorldChampions = (startYear = START_YEAR, endYear = END_YEAR) 
                 driverId: driverData.driverId
             }
         });
-        dispatch(fetchWorldChampionsSuccess(data));
-    } catch (error) {
-        dispatch(fetchWorldChampionsFail({
-            message: 'There was a problem fetching world champions data!'
+    } catch(error) {
+        return dispatch(fetchWorldChampionsFail({
+            message: "Retrieved data cannot be displayed!"
         }))
     }
+
+    dispatch(fetchWorldChampionsSuccess(data));
 };

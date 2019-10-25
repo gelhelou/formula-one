@@ -28,7 +28,7 @@ describe('Fetch World Champions', () => {
                 MRData: {
                     StandingsTable: {
                         season: startYear,
-                        StandingsList: [
+                        StandingsLists: [
                             {
                                 DriverStandings: [
                                     {
@@ -47,18 +47,20 @@ describe('Fetch World Champions', () => {
 
         let dispatch = spy();
         fetchWorldChampions(startYear, endYear)(dispatch);
+
+        const expectedChampions = [
+            {
+                year: startYear,
+                driver: `${championData.givenName} ${championData.familyName}`,
+                age: getAge(championData.dateOfBirth),
+                nationality: championData.nationality,
+                points: 100,
+                driverId: championData.driverId
+            }
+        ];
+
         setTimeout(() => {
             expect(dispatch.getCall(0).calledWithExactly(fetchWorldChampionsPending())).to.equal(true);
-            const expectedChampions = [
-                {
-                    year: startYear,
-                    driver: `${championData.givenName} ${championData.familyName}`,
-                    age: getAge(championData.dateOfBirth),
-                    nationality: championData.nationality,
-                    points: 100,
-                    driverId: championData.driverId
-                }
-            ];
             expect(dispatch.getCall(1).calledWithExactly(fetchWorldChampionsSuccess(expectedChampions))).to.equal(true);
         }, 2000);
     });
@@ -70,7 +72,7 @@ describe('Fetch World Champions', () => {
             });
 
         const error = {
-            message: 'There was a problem fetching world champions data!'
+            message: 'Retrieved data cannot be displayed!'
         };
 
         let dispatch = spy();
