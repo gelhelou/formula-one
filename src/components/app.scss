@@ -1,4 +1,31 @@
-@import "../styles/variables";
+body {
+    font-family: $font-family-sans-serif;
+}
+
+.headings {
+    display: flex;
+    .heading {
+        flex: 1 0;
+        box-sizing: border-box;
+        padding: 10px;
+        text-align: left;
+    }
+}
+
+.table-row {
+    display: flex;
+    :hover {
+        cursor: pointer;
+    }
+}
+
+.table-row > div {
+    flex: 1 0;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: left;
+    min-width: 100px;
+}
 
 .error {
     position: absolute;

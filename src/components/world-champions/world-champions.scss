@@ -1,46 +1,22 @@
-@import "../../styles/variables";
-
 .world-champions-wrapper {
-    font-family: $font-family-sans-serif;
-    border-collapse: collapse;
-    margin: 50px auto;
-    width: 50%;
     font-size: $font-size-base;
+    margin: 50px auto;
+    border-collapse: collapse;
+    width: 50%;
 
     #world-champions-title {
         margin-bottom: 20px;
         font-size: $font-size-title;
     }
-}
-
-.world-champions-wrapper > .headings {
-    display: flex;
-    .heading {
-        flex: 1 0;
-        box-sizing: border-box;
+    .world-champions-listing > .headings .heading {
         background: $champion-primary-color;
-        color: $background-primary-color;
-        padding: 10px;
-        text-align: left;
+        color: white;
         min-width: 100px;
     }
-}
-
-.world-champions-wrapper > .champions {
-    .champion-row {
-        display: flex;
-    }
-    .champion-row:hover {
-        cursor: pointer;
-    }
-    .champion-row > div {
-        flex: 1 0;
-        box-sizing: border-box;
-        background: $background-primary-color;
-        padding: 10px;
-        text-align: left;
-        border: 1px solid $champion-primary-color;
-        min-width: 100px;
+    .world-champions-listing > .champions {
+        .table-row > div {
+            border: 1px solid $champion-primary-color;
+        }
     }
 }
 

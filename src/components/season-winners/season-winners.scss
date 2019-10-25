@@ -1,43 +1,26 @@
-@import "../../styles/variables";
-
 .season-winners-wrapper {
-    .season-winners-title {
-        margin: 15px;
+    font-size: $font-size-base;
+    margin: 15px;
+
+    #season-winners-title {
+        padding-bottom: 10px;
         font-weight: bold;
-        font-size: $font-size-base;
     }
     .season-winners-listing {
-        font-family: $font-family-sans-serif;
         border-collapse: collapse;
-        margin: 15px;
         box-shadow: 0 0 15px $shadow-color;
-        font-size: $font-size-base;
     }
-    .season-winners-listing > .headings {
-        display: flex;
-        .heading {
-            flex: 1 0;
-            box-sizing: border-box;
-            background: $winner-primary-color;
-            color: white;
-            padding: 10px;
-            text-align: left;
-        }
+    .season-winners-listing > .headings .heading {
+        background: $winner-primary-color;
+        color: white;
     }
     .season-winners-listing > .winners {
-        .winner-row {
-            display: flex;
+        .table-row > div {
+            border: 1px solid $winner-primary-color;
         }
-        .winner-row.champion-highlight {
+        .table-row.champion-highlight {
             background-color: $champion-secondary-color;
             color: $winner-primary-color;
-        }
-        .winner-row > div {
-            flex: 1 0;
-            box-sizing: border-box;
-            padding: 10px;
-            text-align: left;
-            border: 1px solid $winner-primary-color;
         }
     }
 }
