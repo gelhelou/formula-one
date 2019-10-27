@@ -1,8 +1,8 @@
 .world-champions-wrapper {
     font-size: $font-size-base;
+    width: 60%;
     margin: 50px auto;
     border-collapse: collapse;
-    width: 50%;
 
     #world-champions-title {
         margin-bottom: 20px;
@@ -11,7 +11,6 @@
     .world-champions-listing > .headings .heading {
         background: $champion-primary-color;
         color: white;
-        min-width: 100px;
     }
     .world-champions-listing > .champions {
         .table-row > div {
@@ -27,4 +26,11 @@
     margin: 0;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 768px) {
+    .world-champions-wrapper {
+        font-size: $font-size-small;
+        width: 80%;
+    }
 }
