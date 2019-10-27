@@ -28,3 +28,9 @@
 .winners-loader {
     text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+    .season-winners-wrapper {
+        font-size: $font-size-small;
+    }
+}
